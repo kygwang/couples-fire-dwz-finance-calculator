@@ -8,12 +8,10 @@ const EconomicFactors: React.FC = () => {
 
   const handleChange = (factor: keyof typeof economicFactors, value: string) => {
     const numValue = parseFloat(value);
-    if (!isNaN(numValue)) {
-      setEconomicFactors({
-        ...economicFactors,
-        [factor]: numValue
-      });
-    }
+    setEconomicFactors({
+      ...economicFactors,
+      [factor]: isNaN(numValue) ? 0 : numValue
+    });
   };
 
   const timeToFire = calculateTimeToFire();
